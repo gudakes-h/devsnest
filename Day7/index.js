@@ -1,8 +1,16 @@
-
 function getprop(myObject)
 {
     var keys = Object.keys(myObject);
     console.log(keys);
+}
+
+function compare_to_sort(x,y) 
+{
+    if (x.libraryID < y.libraryID)
+      return -1;
+    if (x.libraryID > y.libraryID)
+      return 1;
+    return 0;
 }
 
 function delprop(myObject)
@@ -25,10 +33,10 @@ function display(library)
    {
     var book = "'" + library[i].title + "'" + ' by ' + library[i].author + ".";
     if (library[i].readingStatus) {
-      console.log("Already read " + book);
+      console.log("Have Read " + book);
     } else
     {
-     console.log("You still need to read " + book);
+     console.log("Need To Read " + book);
     }
    }
 }
@@ -51,6 +59,24 @@ Cylinder.prototype.Volume = function () {
 var student = { name : "David Rayy", sclass : "VI", rollno : 12 };
 getprop(student);
 
+var stu = { name : "David Rayy", sclass : "VI", rollno : 12 }; 
+delprop(stu);
+
+getlen(student);
+
+var library = [ { author: 'Bill Gates', title: 'The Road Ahead', readingStatus: true }, { author: 'Steve Jobs', title: 'Walter Isaacson', readingStatus: true }, { author: 'Suzanne Collins', title: 'Mockingjay: The Final Book of The Hunger Games', readingStatus: false }]; 
+display(library)
+
+
 var cyl = new Cylinder(7, 4);
 console.log('volume =', cyl.Volume().toFixed(4));
+
+var library = [ 
+  { author: 'Bill Gates', title: 'The Road Ahead', libraryID: 1254},
+  { author: 'Steve Jobs', title: 'Walter Isaacson', libraryID: 4264},
+  { author: 'Suzanne Collins', title: 'Mockingjay: The Final Book of The Hunger Games', libraryID: 3245}
+  ];
+
+console.log(library.sort(compare_to_sort));
+
 
